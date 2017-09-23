@@ -1,5 +1,4 @@
-package org.koalakode.reeve.LicenseServer;// made by reeve
-// on 9:14 PM
+package org.koalakode.reeve.LicenseServer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
