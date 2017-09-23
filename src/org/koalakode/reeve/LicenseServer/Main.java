@@ -1,5 +1,4 @@
-package org.koalakode.reeve.LicenseServer;// made by reeve
-// on 9:11 PM
+package org.koalakode.reeve.LicenseServer;
 
 import java.io.*;
 import java.net.ServerSocket;
