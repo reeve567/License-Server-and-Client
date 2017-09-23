@@ -25,11 +25,6 @@ public class Main {
 
 		if (args.length != 1) {
 			System.out.println("Incorrect args");
-			try {
-				TimeUnit.SECONDS.sleep(1);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 			System.exit(1);
 		}
 
