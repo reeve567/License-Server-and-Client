@@ -34,7 +34,7 @@ public class Main {
 		ArrayList<String> keys = new ArrayList<>();
 		ArrayList<String> values = new ArrayList<>();
 
-		try(BufferedReader br = new BufferedReader(new FileReader("licenses.yml"))) {
+		try(BufferedReader br = new BufferedReader(new FileReader("ips.yml"))) {
 			for(String line; (line = br.readLine()) != null; ) {
 				keys.add(line);
 			}
@@ -67,13 +67,13 @@ public class Main {
 		}
 
 		if (licenses.isEmpty()) {
-			System.out.println("No licenses detected!");
+			System.out.println("No ips detected!");
 			System.exit(1);
 		}
 
 		cal = Calendar.getInstance();
 		System.out.println();
-		System.out.println("License Server started with " + licenses.size() + " licenses available.");
+		System.out.println("DRM Server started with " + licenses.size() + " IPs available.");
 		System.out.println();
 		System.out.println("Current port: " + portNumber);
 		System.out.println();
@@ -90,7 +90,6 @@ public class Main {
 				    ServerSocket serverSocket = new ServerSocket(portNumber);
 				    Socket clientSocket = serverSocket.accept();
 				    PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-				    BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		) {
 			client = clientSocket;
 			cal = Calendar.getInstance();
@@ -101,15 +100,12 @@ public class Main {
 			System.out.println();
 			System.out.println(sdf.format(cal.getTime()));
 			System.out.println();
-			String license = in.readLine();
-			System.out.println("Key provided: " + license);
-
-
+			String license = client.getInetAddress().toString();
 			if (licenses.containsKey(license)) {
 				System.out.println("Successful load from " + licenses.get(license));
 				out.println(true);
 			} else {
-				System.out.println("Unsuccessful load, license provided: " + license);
+				System.out.println("Unsuccessful load -- invalid IP.");
 				out.println(false);
 			}
 

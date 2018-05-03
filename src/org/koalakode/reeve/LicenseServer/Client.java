@@ -35,8 +35,6 @@ public class Client {
 		}
 		catch (IOException e) {
 			System.out.println("Remote server not running.");
-			System.out.println("Remote server not running.");
-			System.out.println("Remote server not running.");
 		}
 	}
 
